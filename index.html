@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login-area">
+    
+    <h2 class="text-center"> Welcome to Expenses Bank</h2>
+    <div class="login-text">
+        <h3>Log in</h3>
+        <input type="text" class="form-control" placeholder="Email or Number">
+        <br>
+        <input type="password" class="form-control" placeholder="Password">
+        <br>
+        <button id="login" class="btn btn-success">Enter</button>
+    </div>
+
+</div>
+    <div id="trans-Area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="ai">
+                    <h5>Income</h5>
+                    <h2> <span id="currentDeposit">00.00</span> BDT</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ae">
+                    <h5>Expenses</h5>
+                    <h2> <span id="currentWithdraw">00.00 </span> BDT</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ba">
+                    <h5>Balance</h5>
+                    <h2> <span id="currentBalance">00.00</span> BDT</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login-text">
+                    <h4>Add Income</h4>
+                    <input id="incomeAmount" type="text" class="form-control" placeholder="৳ amount you want to Income">
+                      <br>
+                    <button id="addDeposit" class="btn btn-success">Income</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="login-text">
+                    <h4>Add Expenses</h4>
+                    <input id="withdrawAmount" type="text" class="form-control" placeholder="৳ amount you want to Expenses"> 
+                    
+                    <br>
+                    <button id="addWithdraw" class="btn btn-success">Expenses</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click", function (){
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display = "none";
+            const transArea = document.getElementById("trans-Area");
+            transArea.style.display = "block";
+        })
+
+
+        const depositBtn = document.getElementById("addDeposit");
+        depositBtn.addEventListener("click", function(){
+
+            const incomeNumber = getInputNumber("incomeAmount");
+
+            
+
+            updateSpanText("currentDeposit",incomeNumber );
+
+            updateSpanText("currentBalance",incomeNumber );
+
+            document.getElementById("incomeAmount").value ="";
+        })
+
+        const withdrawBtn = document.getElementById("addWithdraw");
+        withdrawBtn.addEventListener("click", function(){
+            const withdrawNumber = getInputNumber("withdrawAmount");
+
+            updateSpanText("currentWithdraw", withdrawNumber);
+
+            updateSpanText("currentBalance", -1 * withdrawNumber);
+
+            document.getElementById("withdrawAmount").value = ""
+            
+
+        })
+
+
+
+        function getInputNumber(id){
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
+        }
+
+
+        
+        function updateSpanText(id ,incomeNumber){
+            const currentBalance = document.getElementById(id).innerText;
+            const currentBalanceNumber = parseFloat(currentBalance);
+            const totalBalance = incomeNumber + currentBalanceNumber;
+            document.getElementById(id).innerText = totalBalance;
+            
+        }
+
+    </script>
+    
+</body>
+</html>

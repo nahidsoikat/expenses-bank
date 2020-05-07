@@ -1,0 +1,34 @@
+body{
+    padding: 100px;
+}
+.login-text{
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}
+#trans-Area{
+    display: none;
+}
+.ai{
+    margin: 0px 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: slateblue;
+    color: whitesmoke;
+}
+.ae{
+    margin: 0px 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: lightsalmon;
+    color: whitesmoke;
+    
+}
+.ba{
+    margin: 0px 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: orange;
+    color: whitesmoke;
+}
